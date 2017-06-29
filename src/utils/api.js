@@ -2,6 +2,8 @@ import Promise from 'bluebird';
 import HttpError from 'standard-http-error';
 import {getConfiguration} from '../utils/configuration';
 import {getAuthenticationToken} from '../utils/authentication';
+import cheerio from 'cheerio';
+
 
 const EventEmitter = require('event-emitter');
 
