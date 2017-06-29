@@ -4,7 +4,8 @@ import {
   TouchableOpacity,
   Image,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -80,7 +81,22 @@ class CounterView extends Component {
     return (
       <View style={styles.container}>
 
-        
+
+      <TouchableOpacity
+                accessible={true}
+                accessibilityLabel={'Increment counter'}
+                onPress={this.increment}
+                style={[styles.counterButton, loadingStyle]}>
+                <Text style={styles.counter}>
+                  {this.props.counter}
+                </Text>
+              </TouchableOpacity>
+
+      <Button
+        onPress={this.random}
+        title="Learn More"
+        color="#841584"
+      />
 
       </View>
     );

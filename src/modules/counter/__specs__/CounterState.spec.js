@@ -3,6 +3,8 @@
 import {Effects} from 'redux-loop-symbol-ponyfill';
 import {initialState, dispatch} from '../../../../test/state';
 import * as CounterStateActions from '../CounterState';
+import fetch from 'isomorphic-fetch';
+
 
 describe('CounterState', () => {
 
@@ -60,10 +62,10 @@ describe('CounterState', () => {
 
     it('should generate a random number and dispatch it', async () => {
       const action = await CounterStateActions.requestRandomNumber();
-      expect(typeof action.payload).toBe('number');
+      expect(Array.isArray(action.payload)).toBeTruthy();
 
       const [nextState] = dispatch(initialState, action);
-      expect(nextState.getIn(['counter', 'value'])).toBe(action.payload);
+      expect(nextState.getIn(['counter', 'value'])).toBe(action.payload.length);
       expect(nextState.getIn(['counter', 'loading'])).toBe(false);
     });
   });
