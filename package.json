@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "bluebird": "^3.3.5",
-    "cheerio": "^1.0.0-rc.1",
+    "cheerio-without-node-native": "^0.20.2",
     "event-emitter": "^0.3.4",
     "immutable": "^3.7.6",
     "lodash": "^4.11.0",
