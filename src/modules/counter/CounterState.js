@@ -1,6 +1,6 @@
 import {Map} from 'immutable';
 import {loop, Effects} from 'redux-loop-symbol-ponyfill';
-import {generateRandomNumber} from '../../services/randomNumberService';
+import {getHotWaterBodies} from '../../utils/api';
 
 // Initial state
 const initialState = Map({
@@ -32,7 +32,7 @@ export function random() {
 export async function requestRandomNumber() {
   return {
     type: RANDOM_RESPONSE,
-    payload: await generateRandomNumber()
+    payload: await getHotWaterBodies()
   };
 }
 
