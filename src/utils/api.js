@@ -7,12 +7,56 @@ import cheerio from 'cheerio';
 
 const EventEmitter = require('event-emitter');
 
+const UTAH_FISHING_URL = "https://wildlife.utah.gov/hotspots/";
+
+
 const TIMEOUT = 6000;
 
 /**
  * All HTTP errors are emitted on this channel for interested listeners
  */
 export const errors = new EventEmitter();
+
+
+function findTextAndReturnRemainder(target, variable) {
+  let index = target.search(variable);
+  if(index == -1) {
+    return null;
+  }
+  let chopFront = target.substring(index + variable.length, target.length);
+  let result = chopFront.substring(0, chopFront.search(";"));
+  return result;
+}
+
+function getWaterBody(text, list) {
+  if (!text) {
+    return;
+  }
+  let findAndClean = findTextAndReturnRemainder(text, "var waterbody =")
+  if (findAndClean) {
+    var result = eval(findAndClean);
+
+    result.forEach((waterbody) => {
+      waterbody.url = `https://wildlife.utah.gov/hotspots/detailed.php?id=${waterbody[3]}`
+      list.push(waterbody);
+    })
+  }
+}
+
+export async function getHotWaterBodies() {
+
+  return fetch(UTAH_FISHING_URL).then((resp) => resp.text()).then((html) => {
+    let $ = cheerio.load(html);
+
+    let list = [];
+
+    $('script').each((index, element) => {
+      getWaterBody($(element).html(), list);
+    });
+
+    return list;
+  })
+}
 
 /**
  * GET a path relative to API root url.
