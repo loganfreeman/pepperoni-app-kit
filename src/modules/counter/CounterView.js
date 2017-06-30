@@ -11,9 +11,20 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import ImmutablePropTypes from 'react-immutable-proptypes';
+
 class CounterView extends Component {
   static displayName = 'CounterView';
 
+  constructor(props){
+      super(props);
+      var ds = new ListView.DataSource({
+        rowHasChanged: (r1, r2) => r1 != r2
+      });
+      this.state = {
+        dataSource:ds
+      }
+  }
 
   static navigationOptions = {
     title: 'Counter',
@@ -25,7 +36,7 @@ class CounterView extends Component {
   }
 
   static propTypes = {
-    counter: PropTypes.number.isRequired,
+    counter: PropTypes.array.isRequired,
     userName: PropTypes.string,
     userProfilePhoto: PropTypes.string,
     loading: PropTypes.bool.isRequired,
