@@ -18,11 +18,14 @@ class CounterView extends Component {
 
   constructor(props){
       super(props);
+
+      const mutableData = props.counter.toJS();
+
       var ds = new ListView.DataSource({
         rowHasChanged: (r1, r2) => r1 != r2
       });
       this.state = {
-        dataSource:ds
+        dataSource:ds.cloneWithRows(mutableData)
       }
   }
 
@@ -62,28 +65,6 @@ class CounterView extends Component {
 
   bored = () => {
     this.props.navigate({routeName: 'Color'});
-  };
-
-  renderUserInfo = () => {
-    if (!this.props.userName) {
-      return null;
-    }
-
-    return (
-      <View style={styles.userContainer}>
-        <Image
-          style={styles.userProfilePhoto}
-          source={{
-            uri: this.props.userProfilePhoto,
-            width: 80,
-            height: 80
-          }}
-          />
-        <Text style={styles.linkButton}>
-          Welcome, {this.props.userName}!
-        </Text>
-      </View>
-    );
   };
 
   render() {
