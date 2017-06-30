@@ -4,6 +4,7 @@ import {Effects} from 'redux-loop-symbol-ponyfill';
 import {initialState, dispatch} from '../../../../test/state';
 import * as CounterStateActions from '../CounterState';
 import fetch from 'isomorphic-fetch';
+import {List} from 'immutable';
 
 
 describe('CounterState', () => {
@@ -65,9 +66,10 @@ describe('CounterState', () => {
       expect(Array.isArray(action.payload)).toBeTruthy();
 
       const [nextState] = dispatch(initialState, action);
-      expect(nextState.getIn(['counter', 'value'])).toBe(action.payload);
-      expect(nextState.getIn(['counter', 'loading'])).toBe(false);
-      expect(Array.isArray(nextState.getIn(['counter', 'value']))).toBeTruthy();
+      let value = nextState.getIn(['counter', 'value']);
+      let loading = nextState.getIn(['counter', 'loading']);
+      expect(value).toBe(action.payload);
+      expect(loading).toBe(false);
     });
   });
 });

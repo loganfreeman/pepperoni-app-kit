@@ -11,7 +11,7 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import ImmutablePropTypes from 'react-immutable-proptypes';
+import {List} from 'immutable';
 
 class CounterView extends Component {
   static displayName = 'CounterView';
@@ -36,7 +36,7 @@ class CounterView extends Component {
   }
 
   static propTypes = {
-    counter: PropTypes.array.isRequired,
+    counter: PropTypes.oneOfType([PropTypes.instanceOf(List), PropTypes.instanceOf(Array)]).isRequired,
     userName: PropTypes.string,
     userProfilePhoto: PropTypes.string,
     loading: PropTypes.bool.isRequired,
