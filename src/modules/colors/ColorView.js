@@ -18,11 +18,6 @@ class ColorView extends Component {
 
   static navigationOptions = {
     title: 'Stocking',
-    tabBar: () => ({
-      icon: (props) => (
-        <Icon name='color-lens' size={24} color={props.tintColor} />
-      )
-    }),
     // TODO: move this into global config?
     header: {
       tintColor: 'white',

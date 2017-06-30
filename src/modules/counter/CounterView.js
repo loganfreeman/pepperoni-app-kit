@@ -31,11 +31,13 @@ class CounterView extends Component {
 
   static navigationOptions = {
     title: 'Hot Spots',
-    tabBar: () => ({
-      icon: (props) => (
-        <Icon name='plus-one' size={24} color={props.tintColor} />
-      )
-    })
+    // TODO: move this into global config?
+    header: {
+      tintColor: 'white',
+      style: {
+        backgroundColor: '#39babd'
+      }
+    }
   }
 
   static propTypes = {
