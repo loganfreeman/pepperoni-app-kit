@@ -7,6 +7,23 @@ import ColorViewContainer from '../colors/ColorViewContainer';
 const headerColor = '#39babd';
 const activeColor = 'white';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+
+export const CloseButton = (props) => {
+  let testButton = <TouchableHighlight onPress={() => props.navigation.goBack(null)}>
+    <Icon name='close' style={styles.headerButtonIcon} />
+  </TouchableHighlight>
+  return testButton
+}
+
+export const SettingsButton = (props) => (
+  <TouchableHighlight onPress={() => props.navigate('Settings')}>
+    <Icon name='more-vert' style={styles.headerButtonIcon} />
+  </TouchableHighlight>
+)
+
+
 // TabNavigator is nested inside StackNavigator
 export const MainScreenNavigator = TabNavigator({
   Counter: {screen: CounterViewContainer},
@@ -25,13 +42,13 @@ export const MainScreenNavigator = TabNavigator({
 
 MainScreenNavigator.navigationOptions = {
   title: 'UTAH Fishing',
-  header: {
+  header: ({ navigate }) => ({
     titleStyle: {color: 'white'},
     style: {
       backgroundColor: headerColor,
       elevation: 0 // disable header elevation when TabNavigator visible
-    }
-  }
+    },
+  })
 };
 
 // Root navigator is a StackNavigator
