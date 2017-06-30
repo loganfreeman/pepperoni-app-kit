@@ -150,7 +150,6 @@ const styles = StyleSheet.create({
   },
   row:{
           backgroundColor:'#ef553a',
-          width:300,
           paddingTop:10,
           paddingBottom:20,
           paddingLeft:20,
