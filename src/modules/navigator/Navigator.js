@@ -46,7 +46,7 @@ MainScreenNavigator.navigationOptions = {
     titleStyle: {color: 'white'},
     style: {
       backgroundColor: headerColor,
-      elevation: 0 // disable header elevation when TabNavigator visible
+      elevation: 1 // disable header elevation when TabNavigator visible
     },
   })
 };
