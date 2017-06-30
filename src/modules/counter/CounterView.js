@@ -30,7 +30,7 @@ class CounterView extends Component {
   }
 
   static navigationOptions = {
-    title: 'Counter',
+    title: 'Hot Spots',
     tabBar: () => ({
       icon: (props) => (
         <Icon name='plus-one' size={24} color={props.tintColor} />
@@ -67,6 +67,22 @@ class CounterView extends Component {
     this.props.navigate({routeName: 'Color'});
   };
 
+  renderRow = (rowData) => {
+    return (
+      <View style={styles.row}>
+        <View>
+            <Text style={styles.rowTitle}>{rowData[0]}</Text>
+        </View>
+        <View>
+            <Text style={styles.rowMessage}>{rowData[4]}</Text>
+        </View>
+        <View>
+            <Text style={styles.rowMessage}>{rowData[5]}</Text>
+        </View>
+    </View>
+    );
+  }
+
   render() {
     const loadingStyle = this.props.loading
       ? {backgroundColor: '#eee'}
@@ -78,7 +94,7 @@ class CounterView extends Component {
 
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={(rowData) => <Text>{rowData}</Text>}
+        renderRow={this.renderRow.bind(this)}
       />
 
       </View>
@@ -131,6 +147,26 @@ const styles = StyleSheet.create({
     color: '#CCCCCC',
     marginBottom: 10,
     padding: 5
+  },
+  row:{
+          backgroundColor:'#ef553a',
+          width:300,
+          paddingTop:10,
+          paddingBottom:20,
+          paddingLeft:20,
+          paddingRight:20,
+          borderRadius:10
+      },
+  rowTitle:{
+      fontWeight:'bold',
+      color:'#fff',
+      textAlign:'center',
+      fontSize:20,
+      marginBottom:10
+  },
+  rowMessage:{
+      color:'#fff',
+      fontSize:16
   }
 });
 

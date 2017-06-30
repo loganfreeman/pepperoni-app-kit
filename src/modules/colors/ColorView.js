@@ -17,7 +17,7 @@ class ColorView extends Component {
   static displayName = 'ColorView';
 
   static navigationOptions = {
-    title: 'Colors!',
+    title: 'Stocking',
     tabBar: () => ({
       icon: (props) => (
         <Icon name='color-lens' size={24} color={props.tintColor} />
