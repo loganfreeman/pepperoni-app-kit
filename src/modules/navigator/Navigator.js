@@ -53,7 +53,7 @@ MainScreenNavigator.navigationOptions = {
 
 // Root navigator is a StackNavigator
 const AppNavigator = StackNavigator({
-  Home: {screen: MainScreenNavigator},
+  Home: {screen: CounterViewContainer},
   InfiniteColorStack: {screen: ColorViewContainer}
 });
 
