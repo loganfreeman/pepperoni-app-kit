@@ -5,6 +5,7 @@ import * as snapshotUtil from '../utils/snapshot';
 import * as SessionStateActions from '../modules/session/SessionState';
 import store from '../redux/store';
 import DeveloperMenu from '../components/DeveloperMenu';
+import {random} from '../modules/counter/CounterState';
 
 class AppView extends Component {
   static displayName = 'AppView';
@@ -28,6 +29,8 @@ class AppView extends Component {
         store.subscribe(() => {
           snapshotUtil.saveSnapshot(store.getState());
         });
+
+        dispatch(random());
       });
   }
 

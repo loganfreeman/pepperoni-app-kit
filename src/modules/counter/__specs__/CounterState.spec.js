@@ -65,7 +65,7 @@ describe('CounterState', () => {
       expect(Array.isArray(action.payload)).toBeTruthy();
 
       const [nextState] = dispatch(initialState, action);
-      expect(nextState.getIn(['counter', 'value'])).toBe(action.payload.length);
+      expect(nextState.getIn(['counter', 'value'])).toBe(action.payload);
       expect(nextState.getIn(['counter', 'loading'])).toBe(false);
     });
   });

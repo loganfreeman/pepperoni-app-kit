@@ -54,7 +54,7 @@ export default function CounterStateReducer(state = initialState, action = {}) {
     case RANDOM_RESPONSE:
       return state
         .set('loading', false)
-        .set('value', action.payload.length);
+        .set('value', action.payload);
 
     default:
       return state;

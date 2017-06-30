@@ -5,13 +5,15 @@ import {
   Image,
   Text,
   View,
-  Button
+  Button,
+  ListView
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class CounterView extends Component {
   static displayName = 'CounterView';
+
 
   static navigationOptions = {
     title: 'Counter',
@@ -82,20 +84,9 @@ class CounterView extends Component {
       <View style={styles.container}>
 
 
-      <TouchableOpacity
-                accessible={true}
-                accessibilityLabel={'Increment counter'}
-                onPress={this.increment}
-                style={[styles.counterButton, loadingStyle]}>
-                <Text style={styles.counter}>
-                  {this.props.counter}
-                </Text>
-              </TouchableOpacity>
-
-      <Button
-        onPress={this.random}
-        title="Learn More"
-        color="#841584"
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={(rowData) => <Text>{rowData}</Text>}
       />
 
       </View>
