@@ -1,9 +1,9 @@
-import {Map} from 'immutable';
+import {Map, fromJS} from 'immutable';
 import {loop, Effects} from 'redux-loop-symbol-ponyfill';
 import {getHotWaterBodies} from '../../utils/api';
 
 // Initial state
-const initialState = Map({
+const initialState = fromJS({
   loading: false,
   value: []
 });

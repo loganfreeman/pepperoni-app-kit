@@ -18,6 +18,7 @@ class CounterView extends Component {
 
   constructor(props){
       super(props);
+      console.log(props.counter);
       const mutableData = props.counter.toJS();
 
       var ds = new ListView.DataSource({
