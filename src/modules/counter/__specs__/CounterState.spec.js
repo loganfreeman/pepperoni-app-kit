@@ -9,23 +9,10 @@ import {List} from 'immutable';
 
 describe('CounterState', () => {
 
-  // Example of how to test multiple dispatches in series
-  describe('increment', () => {
-    const getValue = state => state.getIn(['counter', 'value']);
-
-    it('should increment the value property by one', () => {
-      const [secondState] = dispatch(initialState, CounterStateActions.increment());
-      expect(getValue(secondState)).toBe(getValue(initialState) + 1);
-
-      const [thirdState] = dispatch(secondState, CounterStateActions.increment());
-      expect(getValue(thirdState)).toBe(getValue(secondState) + 1);
-    });
-  });
-
   describe('reset', () => {
     it('should reset the counter state to initial value', () => {
       // create an incremented state to test against
-      const [modifiedState] = dispatch(initialState, CounterStateActions.increment());
+      const [modifiedState] = dispatch(initialState, CounterStateActions.random());
       expect(modifiedState.get('counter')).not.toBe(initialState.get('counter'));
 
       // reset to original and verify it === initial state

@@ -18,7 +18,6 @@ class CounterView extends Component {
 
   constructor(props){
       super(props);
-
       const mutableData = props.counter.toJS();
 
       var ds = new ListView.DataSource({
@@ -46,7 +45,6 @@ class CounterView extends Component {
     userProfilePhoto: PropTypes.string,
     loading: PropTypes.bool.isRequired,
     counterStateActions: PropTypes.shape({
-      increment: PropTypes.func.isRequired,
       reset: PropTypes.func.isRequired,
       random: PropTypes.func.isRequired
     }).isRequired,
