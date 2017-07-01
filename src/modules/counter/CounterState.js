@@ -3,7 +3,7 @@ import {loop, Effects} from 'redux-loop-symbol-ponyfill';
 import {getHotWaterBodies} from '../../utils/api';
 
 // Initial state
-const initialState = fromJS({
+const initialState = Map({
   loading: false,
   value: []
 });

@@ -16,32 +16,11 @@ class AppView extends Component {
   };
 
   componentDidMount() {
-    snapshotUtil.resetSnapshot()
-      .then(snapshot => {
-        const {dispatch} = this.props;
-
-        if (snapshot) {
-          dispatch(SessionStateActions.resetSessionStateFromSnapshot(snapshot));
-        } else {
-          dispatch(SessionStateActions.initializeSessionState());
-        }
-
-        store.subscribe(() => {
-          snapshotUtil.saveSnapshot(store.getState());
-        });
-
-        dispatch(random());
-      });
+    const dispatch = this.props.dispatch;
+    dispatch(random());
   }
 
   render() {
-    if (!this.props.isReady) {
-      return (
-        <View style={{flex: 1}}>
-          <ActivityIndicator style={styles.centered} />
-        </View>
-      );
-    }
 
     return (
       <View style={{flex: 1}}>

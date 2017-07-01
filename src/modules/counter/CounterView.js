@@ -18,18 +18,20 @@ class CounterView extends Component {
 
   constructor(props){
       super(props);
-      const mutableData = props.counter.toJS();
-
       var ds = new ListView.DataSource({
         rowHasChanged: (r1, r2) => r1 != r2
       });
       this.state = {
-        dataSource:ds.cloneWithRows(mutableData)
+        dataSource:ds
       }
   }
 
   componentWillReceiveProps(nextProps) {
     console.log(nextProps.counter)
+
+    this.setState({
+      dataSource: this.state.dataSource.cloneWithRows(nextProps.counter)
+    })
   }
 
   static navigationOptions = {
@@ -95,6 +97,7 @@ class CounterView extends Component {
       <ListView
         dataSource={this.state.dataSource}
         renderRow={this.renderRow.bind(this)}
+        enableEmptySections={true}
       />
 
       </View>
