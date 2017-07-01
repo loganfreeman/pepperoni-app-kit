@@ -4,7 +4,8 @@ import {getHotWaterBodies} from '../../utils/api';
 
 // Initial state
 const initialState = Map({
-  loading: false
+  loading: false,
+  value: []
 });
 
 // Actions
