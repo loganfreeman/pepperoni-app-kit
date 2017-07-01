@@ -27,8 +27,6 @@ class CounterView extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.counter)
-
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(nextProps.counter)
     })
