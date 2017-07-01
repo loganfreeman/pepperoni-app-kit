@@ -38,7 +38,6 @@ describe('API', () => {
   describe('fishing report', () => {
     it('should get hot waterbodies', async () => {
       let list = await api.getHotWaterBodies();
-      console.dir(list[0]);
       expect(list.length).toEqual(146);
     })
   })
