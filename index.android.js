@@ -2,7 +2,7 @@ import {Provider} from 'react-redux';
 import store from './src/redux/store';
 import AppViewContainer from './src/modules/AppViewContainer';
 import React, {Component} from 'react';
-import {AppRegistry, BackAndroid} from 'react-native';
+import {AppRegistry, BackAndroid, Alert} from 'react-native';
 import {NavigationActions} from 'react-navigation';
 
 class PepperoniAppTemplate extends Component {
@@ -19,8 +19,18 @@ class PepperoniAppTemplate extends Component {
       return true;
     }
 
+
+    Alert.alert(
+      'Alert Exit',
+      'Really want to exit?',
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () => BackAndroid.exitApp()},
+      ],
+      { cancelable: false }
+    )
     // otherwise let OS handle the back button action
-    return false;
+    return true;
   }
 
   render() {
