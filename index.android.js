@@ -13,7 +13,6 @@ class PepperoniAppTemplate extends Component {
   navigateBack() {
     const navigatorState = store.getState().get('navigatorState');
     const currentStackScreen = navigatorState.get('index');
-    const currentTab = navigatorState.getIn(['routes', 0, 'index']);
 
     if (currentStackScreen !== 0) {
       store.dispatch(NavigationActions.back());
