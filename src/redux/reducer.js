@@ -36,5 +36,5 @@ export default function mainReducer(state, action) {
     : namespacedReducer(state || void 0, action);
 
   // enforce the state is immutable
-  return loop(fromJS(nextState), effects);
+  return loop(nextState, effects);
 }

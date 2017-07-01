@@ -18,7 +18,6 @@ class CounterView extends Component {
 
   constructor(props){
       super(props);
-      console.log(props.counter);
       const mutableData = props.counter.toJS();
 
       var ds = new ListView.DataSource({
@@ -27,6 +26,10 @@ class CounterView extends Component {
       this.state = {
         dataSource:ds.cloneWithRows(mutableData)
       }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.counter)
   }
 
   static navigationOptions = {
@@ -50,10 +53,6 @@ class CounterView extends Component {
       random: PropTypes.func.isRequired
     }).isRequired,
     navigate: PropTypes.func.isRequired
-  };
-
-  increment = () => {
-    this.props.counterStateActions.increment();
   };
 
   reset = () => {
