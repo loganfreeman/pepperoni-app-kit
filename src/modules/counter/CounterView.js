@@ -13,6 +13,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {List} from 'immutable';
 
+import { Toolbar } from 'react-native-material-ui';
+
 class CounterView extends Component {
   static displayName = 'CounterView';
 
@@ -33,14 +35,7 @@ class CounterView extends Component {
   }
 
   static navigationOptions = {
-    title: 'Hot Spots',
-    // TODO: move this into global config?
-    header: {
-      tintColor: 'white',
-      style: {
-        backgroundColor: '#39babd'
-      }
-    }
+    headerTitle: 'Hot Spots'
   }
 
   static propTypes = {

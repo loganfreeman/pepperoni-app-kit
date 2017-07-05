@@ -17,14 +17,7 @@ class ColorView extends Component {
   static displayName = 'ColorView';
 
   static navigationOptions = {
-    title: 'Stocking',
-    // TODO: move this into global config?
-    header: {
-      tintColor: 'white',
-      style: {
-        backgroundColor: '#39babd'
-      }
-    }
+    title: 'Stocking'
   }
 
   static propTypes = {
